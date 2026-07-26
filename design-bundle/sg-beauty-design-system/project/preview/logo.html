@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SG Beauty — Logo Lockup</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); }
+  .frame { padding: 18px 22px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .tile { aspect-ratio: 1; border-radius: 14px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .tile.sage  { background: #9CA68B; }
+  .tile.cream { background: #FFF3E4; border: 1px solid #EED6C4; }
+  .tile.white { background: #fff; border: 1px solid rgba(0,0,0,0.08); }
+  .tile.ink   { background: #17313E; }
+  .tile.black { background: #000; }
+  .tile img { width: 82%; height: 82%; object-fit: contain; display: block; }
+  .label {
+    position: absolute; bottom: 8px; left: 10px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .tile.sage .label, .tile.ink .label, .tile.black .label { color: rgba(255,255,255,0.78); }
+  .tile.cream .label, .tile.white .label { color: rgba(23,49,62,0.55); }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="tile white"><img src="../assets/logo-sg-beauty-transparent.png" alt="SG Beauty"><span class="label">Primary · sage on white</span></div>
+  <div class="tile cream"><img src="../assets/logo-sg-beauty-transparent.png" alt="SG Beauty"><span class="label">On cream</span></div>
+  <div class="tile sage"><img src="../assets/logo-sg-beauty.png" alt="SG Beauty"><span class="label">Brand square · sage</span></div>
+  <div class="tile black"><img src="../assets/logo-sg-beauty-black.png" alt="SG Beauty"><span class="label">Reverse · black</span></div>
+</div>
+</body>
+</html>

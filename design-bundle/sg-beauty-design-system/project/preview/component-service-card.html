@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SG Beauty — Service Card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--fg-1); }
+  .frame { padding: 22px 26px; display: flex; gap: 22px; align-items: flex-start; }
+
+  .card {
+    width: 300px;
+    border-radius: 24px;
+    background: #FFF3E4;
+    border: 1px solid #EED6C4;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 2px 6px rgba(23,49,62,0.06);
+    overflow: hidden;
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .card.hover {
+    border-color: rgba(65,94,114,0.6);
+    box-shadow: 0 12px 28px rgba(23,49,62,0.14);
+    transform: translateY(-2px);
+  }
+
+  /* Photo */
+  .photo {
+    position: relative;
+    aspect-ratio: 5/4;
+    background: #C7CEB8 center/cover;
+    border-radius: 20px 20px 0 0;
+  }
+  .photo::after {
+    content: ""; position: absolute; inset: auto 0 0 0; height: 60%;
+    background: linear-gradient(to bottom, transparent, rgba(23,49,62,0.55));
+    pointer-events: none;
+  }
+  .chip-row {
+    position: absolute; top: 12px; left: 12px; right: 12px; z-index: 2;
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .chip {
+    padding: 5px 10px; border-radius: 5px;
+    font-family: Inter, sans-serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .chip.cat { background: rgba(255,243,228,0.92); color: #17313E; }
+  .chip.popular { background: #17313E; color: #FFF3E4; }
+  .chip.new { background: #9CA68B; color: #fff; }
+
+  .rating {
+    position: absolute; bottom: 12px; left: 12px; z-index: 2;
+    display: inline-flex; align-items: center; gap: 4px;
+    font-family: Inter; font-size: 12px; font-weight: 700;
+    color: #fff;
+  }
+  .rating svg { width: 12px; height: 12px; color: #FFF3E4; }
+  .rating .ct { font-weight: 500; opacity: 0.75; margin-left: 2px; }
+
+  /* Body */
+  .body { padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 10px; }
+  .titles { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .title { margin: 0; font-family: Inter; font-weight: 700; font-size: 20px; color: #17313E; line-height: 1.2; }
+  .duration { font-family: Inter; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: #6F7B61; flex-shrink: 0; }
+  .desc { margin: 0; font-family: Inter; font-size: 13.5px; font-weight: 400; line-height: 1.5; color: #6B4F4F; }
+
+  /* Features list */
+  .features { display: flex; flex-direction: column; gap: 6px; margin: 4px 0 8px; padding: 0; list-style: none; }
+  .features li { display: flex; align-items: center; gap: 8px; font-family: Inter; font-size: 12.5px; color: #17313E; }
+  .features svg { width: 12px; height: 12px; flex-shrink: 0; color: #6F7B61; }
+
+  /* Footer */
+  .foot { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px dashed #DCBFA8; }
+  .price-grp { display: flex; flex-direction: column; line-height: 1; gap: 2px; }
+  .from { font-family: Inter; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6B4F4F; }
+  .price { font-family: "Playfair Display", Georgia, serif; font-weight: 600; font-size: 26px; color: #17313E; letter-spacing: -0.01em; }
+  .price .strike { font-size: 14px; color: rgba(107,79,79,0.6); text-decoration: line-through; font-family: Inter; font-weight: 500; margin-right: 6px; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 16px; border-radius: 999px;
+    background: #9CA68B; color: #fff;
+    font-family: Inter; font-size: 13px; font-weight: 700;
+    border: none; cursor: pointer;
+  }
+  .btn.dark { background: #17313E; }
+  .btn svg { width: 10px; height: 10px; }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- Card 1: Classic, default -->
+  <article class="card">
+    <div class="photo" style="background-image:url(../assets/images/hero-portrait.png); background-position: center 30%">
+      <div class="chip-row">
+        <span class="chip cat">Classic</span>
+      </div>
+      <div class="rating">
+        <svg viewBox="0 0 14 14" fill="currentColor"><path d="M7 0.5L8.7 5L13.5 5.3L9.8 8.5L11 13.5L7 10.7L3 13.5L4.2 8.5L0.5 5.3L5.3 5L7 0.5Z"/></svg>
+        4.97<span class="ct">· 218</span>
+      </div>
+    </div>
+    <div class="body">
+      <div class="titles">
+        <h3 class="title">Classic Set</h3>
+        <span class="duration">120 min</span>
+      </div>
+      <p class="desc">One lightweight extension per natural lash. Polished, undetectable, your-lashes-but-better.</p>
+      <ul class="features">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Custom shape consult</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Premium silk lashes · 0.15 mm</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Aftercare kit included</li>
+      </ul>
+      <div class="foot">
+        <div class="price-grp">
+          <span class="from">From</span>
+          <span class="price">$140</span>
+        </div>
+        <button class="btn">Book <svg viewBox="0 0 6.391 11.095" fill="currentColor"><path d="M 6.147 4.948 L 1.433 0.234 C 1.276 0.082 1.065 -0.002 0.847 0 C 0.628 0.002 0.419 0.09 0.265 0.244 C 0.11 0.399 0.022 0.608 0.021 0.826 C 0.019 1.045 0.103 1.255 0.254 1.412 L 4.379 5.537 L 0.254 9.668 C 0.103 9.825 0.019 10.035 0.021 10.254 C 0.022 10.472 0.11 10.681 0.265 10.836 C 0.419 10.99 0.628 11.078 0.847 11.08 C 1.065 11.082 1.276 10.998 1.433 10.841 L 6.147 6.126 C 6.303 5.97 6.391 5.758 6.391 5.537 C 6.391 5.316 6.303 5.104 6.147 4.948 Z" fill-rule="evenodd"/></svg></button>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2: Hybrid, hover + popular badge -->
+  <article class="card hover">
+    <div class="photo" style="background-image:url(../assets/images/portrait-1.jpg); background-position: center">
+      <div class="chip-row">
+        <span class="chip cat">Hybrid</span>
+        <span class="chip popular">Most booked</span>
+      </div>
+      <div class="rating">
+        <svg viewBox="0 0 14 14" fill="currentColor"><path d="M7 0.5L8.7 5L13.5 5.3L9.8 8.5L11 13.5L7 10.7L3 13.5L4.2 8.5L0.5 5.3L5.3 5L7 0.5Z"/></svg>
+        4.99<span class="ct">· 412</span>
+      </div>
+    </div>
+    <div class="body">
+      <div class="titles">
+        <h3 class="title">Hybrid Set</h3>
+        <span class="duration">135 min</span>
+      </div>
+      <p class="desc">70/30 mix of classic and hand-made volume fans. Texture, density and that hint of drama.</p>
+      <ul class="features">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Custom mapped fans</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>3 – 5 week retention</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>First fill 50% off</li>
+      </ul>
+      <div class="foot">
+        <div class="price-grp">
+          <span class="from">From</span>
+          <span class="price"><span class="strike">$210</span>$180</span>
+        </div>
+        <button class="btn dark">Book <svg viewBox="0 0 6.391 11.095" fill="currentColor"><path d="M 6.147 4.948 L 1.433 0.234 C 1.276 0.082 1.065 -0.002 0.847 0 C 0.628 0.002 0.419 0.09 0.265 0.244 C 0.11 0.399 0.022 0.608 0.021 0.826 C 0.019 1.045 0.103 1.255 0.254 1.412 L 4.379 5.537 L 0.254 9.668 C 0.103 9.825 0.019 10.035 0.021 10.254 C 0.022 10.472 0.11 10.681 0.265 10.836 C 0.419 10.99 0.628 11.078 0.847 11.08 C 1.065 11.082 1.276 10.998 1.433 10.841 L 6.147 6.126 C 6.303 5.97 6.391 5.758 6.391 5.537 C 6.391 5.316 6.303 5.104 6.147 4.948 Z" fill-rule="evenodd"/></svg></button>
+      </div>
+    </div>
+  </article>
+
+</div>
+</body>
+</html>

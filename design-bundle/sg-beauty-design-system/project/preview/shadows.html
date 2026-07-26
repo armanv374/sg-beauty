@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SG Beauty — Elevation</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #f7f4ee; font-family: var(--font-body); color: var(--fg-1); }
+  .frame { padding: 32px 28px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .surf { width: 130px; height: 90px; background: #fff; border-radius: 16px; }
+  .s1 { box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 2px 6px rgba(23,49,62,0.06); }
+  .s2 { box-shadow: 0 2px 12px rgba(0,0,0,0.10); }
+  .s3 { box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .sc { box-shadow: 0 2px 12px rgba(0,0,0,0.25); background: #FFF3E4; border: 1px solid rgba(23,49,62,0.4); }
+  .name { font-size: 11px; font-weight: 600; color: var(--sg-ink); letter-spacing: 0.06em; text-transform: uppercase; }
+  .sub { font-size: 11px; color: var(--fg-3); }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="item"><div class="surf s1"></div><span class="name">shadow-1</span><span class="sub">Resting card</span></div>
+  <div class="item"><div class="surf s2"></div><span class="name">shadow-2</span><span class="sub">Popover</span></div>
+  <div class="item"><div class="surf s3"></div><span class="name">shadow-3</span><span class="sub">Hovered card</span></div>
+  <div class="item"><div class="surf sc"></div><span class="name">shadow-card</span><span class="sub">Benefit card</span></div>
+</div>
+</body>
+</html>

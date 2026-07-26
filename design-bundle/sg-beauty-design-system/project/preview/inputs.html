@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SG Beauty — Inputs</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--fg-1); }
+  .frame { padding: 24px 28px; display: flex; flex-direction: column; gap: 14px; }
+  .row { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 12px; align-items: center; }
+  .label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sg-rose-text); font-weight: 600; }
+  .input { padding: 12px 16px; border-radius: 10px 10px 16px 16px; font-family: var(--font-body); font-size: 15px; font-weight: 500; color: #17313E; background: #fff; border: 1px solid rgba(23,49,62,0.4); outline: none; }
+  .input::placeholder { color: rgba(23,49,62,0.55); }
+  .input.default { background: rgba(23,49,62,0.06); }
+  .input.focus { border-color: #6F7B61; box-shadow: 0 0 0 3px rgba(156,166,139,0.35); }
+  .input.error { border-color: #D66363; }
+  .input.disabled { background: #f3f0ea; color: rgba(23,49,62,0.4); border-color: rgba(0,0,0,0.06); }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="row"><span class="label">Default</span><input class="input default" placeholder="Your name"><input class="input default" placeholder="Email address"></div>
+  <div class="row"><span class="label">Focus</span><input class="input focus" value="Sophia Garcia"><input class="input focus" value="sophia@example.com"></div>
+  <div class="row"><span class="label">Error</span><input class="input error" value="sophia@example"><input class="input disabled" placeholder="Phone — disabled" disabled></div>
+</div>
+</body>
+</html>

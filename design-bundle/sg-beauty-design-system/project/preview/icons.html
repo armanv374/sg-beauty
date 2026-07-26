@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SG Beauty — Icon Set</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--fg-1); }
+  .frame { padding: 20px 24px; }
+  .grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+  .cell { aspect-ratio: 1; background: #FFF3E4; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #17313E; }
+  .cell img { width: 22px; height: 22px; filter: invert(11%) sepia(15%) saturate(1500%) hue-rotate(155deg); }
+  .lbl { font-size: 9px; font-weight: 600; letter-spacing: 0.02em; color: #6B4F4F; }
+  .note { margin-top: 12px; font-size: 11px; color: var(--fg-3); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="grid">
+    <div class="cell"><img src="../assets/icons/arrow-right.svg" alt=""><span class="lbl">arrow</span></div>
+    <div class="cell"><img src="../assets/icons/chevron-down.svg" alt=""><span class="lbl">chevron</span></div>
+    <div class="cell"><img src="../assets/icons/menu.svg" alt=""><span class="lbl">menu</span></div>
+    <div class="cell"><img src="../assets/icons/close.svg" alt=""><span class="lbl">close</span></div>
+    <div class="cell"><img src="../assets/icons/check.svg" alt=""><span class="lbl">check</span></div>
+    <div class="cell"><img src="../assets/icons/alert.svg" alt=""><span class="lbl">alert</span></div>
+    <div class="cell"><img src="../assets/icons/star.svg" alt=""><span class="lbl">star</span></div>
+    <div class="cell"><img src="../assets/icons/star-filled.svg" alt=""><span class="lbl">star fill</span></div>
+    <div class="cell"><img src="../assets/icons/clock-1.svg" alt=""><span class="lbl">clock</span></div>
+    <div class="cell"><img src="../assets/icons/phone.svg" alt=""><span class="lbl">phone</span></div>
+    <div class="cell"><img src="../assets/icons/mail.svg" alt=""><span class="lbl">mail</span></div>
+    <div class="cell"><img src="../assets/icons/map-pin.svg" alt=""><span class="lbl">map-pin</span></div>
+    <div class="cell"><img src="../assets/icons/instagram.svg" alt=""><span class="lbl">instagram</span></div>
+    <div class="cell"><img src="../assets/icons/whatsapp-1.svg" alt=""><span class="lbl">whatsapp</span></div>
+  </div>
+  <p class="note">15 SVGs, all currentColor. Anything missing — use Lucide from CDN at matching stroke weight.</p>
+</div>
+</body>
+</html>

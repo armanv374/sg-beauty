@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SG Beauty — Lash Studio in Capitol Hill, Seattle</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; color: var(--fg-1); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: inherit; }
+
+  /* Modal */
+  .sg-modal-backdrop {
+    position: fixed; inset: 0; background: rgba(23,49,62,0.55);
+    backdrop-filter: blur(6px); z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    animation: fade-in 220ms ease;
+  }
+  .sg-modal {
+    background: #FFF3E4; border-radius: 24px; max-width: 480px; width: 90%;
+    padding: 36px; box-shadow: 0 24px 60px rgba(23,49,62,0.30);
+    animation: pop-in 280ms cubic-bezier(.22,.61,.36,1);
+  }
+  @keyframes fade-in { from { opacity: 0 } }
+  @keyframes pop-in { from { opacity: 0; transform: translateY(12px) scale(0.98) } }
+</style>
+
+<!-- Speaker notes element NOT included; this is not a deck -->
+</head>
+<body data-screen-label="SG Beauty homepage">
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Hero.jsx"></script>
+  <script type="text/babel" src="Services.jsx"></script>
+  <script type="text/babel" src="Divider.jsx"></script>
+  <script type="text/babel" src="Testimonials.jsx"></script>
+  <script type="text/babel" src="Contact.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function BookingModal({ onClose }) {
+      const [stage, setStage] = useState("pick"); // pick | confirm | done
+      const [service, setService] = useState("Classic Set");
+      const [date, setDate] = useState("Sat Jun 6");
+      const [time, setTime] = useState("11:30 AM");
+
+      const slots = ["10:00 AM", "11:30 AM", "1:00 PM", "2:30 PM", "4:00 PM", "5:30 PM"];
+      const dates = ["Thu Jun 4", "Fri Jun 5", "Sat Jun 6", "Sun Jun 7", "Tue Jun 9"];
+      const services = ["Classic Set", "Hybrid Set", "Volume Set", "Lash Lift & Tint", "Brow Lamination"];
+
+      return (
+        <div className="sg-modal-backdrop" onClick={onClose}>
+          <div className="sg-modal" onClick={e => e.stopPropagation()}>
+            {stage === "pick" && (
+              <>
+                <Eyebrow color="#6F7B61">Step 1 of 2</Eyebrow>
+                <h2 style={{margin: "8px 0 18px", fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 600, fontSize: 32, color: "#17313E"}}>Pick your service.</h2>
+                <div style={{display: "flex", flexDirection: "column", gap: 8, marginBottom: 18}}>
+                  {services.map(s => (
+                    <button key={s} onClick={() => setService(s)} style={{
+                      textAlign: "left", padding: "12px 16px",
+                      borderRadius: 12, border: `1px solid ${service === s ? "#9CA68B" : "rgba(23,49,62,0.18)"}`,
+                      background: service === s ? "#E8ECDF" : "transparent",
+                      fontFamily: "Inter", fontSize: 14, fontWeight: 600, color: "#17313E",
+                      cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center",
+                    }}>
+                      <span>{s}</span>
+                      {service === s && <span style={{color: "#6F7B61"}}>✓</span>}
+                    </button>
+                  ))}
+                </div>
+                <div style={{display: "flex", justifyContent: "space-between", gap: 10}}>
+                  <Button variant="ghost" onClick={onClose} icon={false}>Cancel</Button>
+                  <Button variant="dark" onClick={() => setStage("confirm")}>Continue</Button>
+                </div>
+              </>
+            )}
+            {stage === "confirm" && (
+              <>
+                <Eyebrow color="#6F7B61">Step 2 of 2</Eyebrow>
+                <h2 style={{margin: "8px 0 6px", fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 600, fontSize: 32, color: "#17313E"}}>Pick a time.</h2>
+                <p style={{margin: "0 0 18px", fontFamily: "Inter", fontSize: 14, color: "#6B4F4F"}}>For your <strong>{service}</strong>.</p>
+                <div style={{display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap"}}>
+                  {dates.map(d => (
+                    <button key={d} onClick={() => setDate(d)} style={{
+                      padding: "8px 12px", borderRadius: 10, border: "1px solid",
+                      background: date === d ? "#17313E" : "transparent",
+                      borderColor: date === d ? "#17313E" : "rgba(23,49,62,0.18)",
+                      color: date === d ? "#fff" : "#17313E",
+                      fontFamily: "Inter", fontSize: 13, fontWeight: 600, cursor: "pointer",
+                    }}>{d}</button>
+                  ))}
+                </div>
+                <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 6, marginBottom: 22}}>
+                  {slots.map(t => (
+                    <button key={t} onClick={() => setTime(t)} style={{
+                      padding: "10px 8px", borderRadius: 10, border: "1px solid",
+                      background: time === t ? "#9CA68B" : "transparent",
+                      borderColor: time === t ? "#9CA68B" : "rgba(23,49,62,0.18)",
+                      color: time === t ? "#fff" : "#17313E",
+                      fontFamily: "Inter", fontSize: 13, fontWeight: 600, cursor: "pointer",
+                    }}>{t}</button>
+                  ))}
+                </div>
+                <div style={{display: "flex", justifyContent: "space-between", gap: 10}}>
+                  <Button variant="ghost" onClick={() => setStage("pick")} icon={false}>← Back</Button>
+                  <Button variant="dark" onClick={() => setStage("done")}>Confirm booking</Button>
+                </div>
+              </>
+            )}
+            {stage === "done" && (
+              <>
+                <div style={{width: 56, height: 56, borderRadius: "50%", background: "#9CA68B", display: "inline-flex", alignItems: "center", justifyContent: "center", marginBottom: 18}}>
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h2 style={{margin: "0 0 8px", fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 600, fontSize: 32, color: "#17313E"}}>You're booked.</h2>
+                <p style={{margin: "0 0 18px", fontFamily: "Inter", fontSize: 15, color: "#6B4F4F", lineHeight: 1.55}}>
+                  <strong>{service}</strong> on <strong>{date}</strong> at <strong>{time}</strong>.<br/>
+                  We've sent the confirmation to your email — see you at the studio.
+                </p>
+                <div style={{display: "flex", gap: 8}}>
+                  <Button variant="dark" onClick={onClose}>Close</Button>
+                  <Button variant="ghost" icon={false} onClick={() => setStage("pick")}>Book another</Button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      const [booking, setBooking] = useState(false);
+      const open = () => setBooking(true);
+      const close = () => setBooking(false);
+      return (
+        <div>
+          <Header onBook={open}/>
+          <Hero onBook={open}/>
+          <Services onBook={open}/>
+          <Divider/>
+          <Testimonials/>
+          <GalleryStrip/>
+          <Contact/>
+          <Footer/>
+          {booking && <BookingModal onClose={close}/>}
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App/>);
+  </script>
+</body>
+</html>

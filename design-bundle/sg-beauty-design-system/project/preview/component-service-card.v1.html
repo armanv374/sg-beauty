@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SG Beauty — Service Card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--fg-1); }
+  .frame { padding: 24px 28px; display: flex; gap: 24px; }
+  .card { width: 280px; border-radius: 24px; background: #FFF3E4; border: 1px solid #EED6C4; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .card.hover { border-color: rgba(65,94,114,0.6); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .photo { height: 160px; border-radius: 20px; background: #C7CEB8 url(../assets/images/hero-portrait.png) center/cover; }
+  .title { font-family: var(--font-body); font-weight: 700; font-size: 20px; line-height: 1.3; color: #17313E; }
+  .desc { font-family: var(--font-body); font-weight: 300; font-size: 14px; line-height: 1.5; color: #6B4F4F; min-height: 42px; }
+  .meta { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-weight: 600; }
+  .meta .from { font-size: 14px; color: #6B4F4F; }
+  .meta .price { font-size: 16px; color: #415E72; }
+  .btn { align-self: flex-start; padding: 8px 18px; border-radius: 999px; background: #9CA68B; color: #fff; font-size: 14px; font-weight: 700; border: none; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="card">
+    <div class="photo"></div>
+    <div class="title">Classic Set</div>
+    <div class="desc">One extension per natural lash, for a soft, polished everyday look.</div>
+    <div class="meta"><span class="from">From</span><span class="price">$140</span></div>
+    <button class="btn">Book now</button>
+  </div>
+  <div class="card hover">
+    <div class="photo" style="background-image:url(../assets/images/portrait-1.jpg)"></div>
+    <div class="title">Volume Set</div>
+    <div class="desc">Hand-made fans for dense, fluffy lashes — still feather-light.</div>
+    <div class="meta"><span class="from">From</span><span class="price">$220</span></div>
+    <button class="btn">Book now</button>
+  </div>
+</div>
+</body>
+</html>

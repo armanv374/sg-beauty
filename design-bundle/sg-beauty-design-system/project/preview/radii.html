@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SG Beauty — Radii</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--fg-1); }
+  .frame { padding: 22px 24px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .shape { width: 90px; height: 90px; background: #FFF3E4; border: 1px solid #EED6C4; }
+  .name { font-size: 11px; font-weight: 600; color: var(--sg-ink); letter-spacing: 0.04em; text-transform: uppercase; }
+  .px { font-size: 11px; color: var(--fg-3); font-variant-numeric: tabular-nums; }
+  .pill { width: 130px; height: 44px; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="item"><div class="shape" style="border-radius:5px"></div><span class="name">xs</span><span class="px">5 px</span></div>
+  <div class="item"><div class="shape" style="border-radius:10px"></div><span class="name">sm</span><span class="px">10 px</span></div>
+  <div class="item"><div class="shape" style="border-radius:16px"></div><span class="name">md</span><span class="px">16 px</span></div>
+  <div class="item"><div class="shape" style="border-radius:20px"></div><span class="name">lg</span><span class="px">20 px</span></div>
+  <div class="item"><div class="shape" style="border-radius:24px; background:#E8ECDF; border-color:#C7CEB8"></div><span class="name">xl ★</span><span class="px">24 px</span></div>
+  <div class="item"><div class="shape pill" style="border-radius:999px; background:#9CA68B; border:none"></div><span class="name">pill</span><span class="px">999</span></div>
+</div>
+</body>
+</html>

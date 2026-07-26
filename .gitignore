@@ -1,0 +1,22 @@
+# Dependencies
+/node_modules
+
+# Next.js build output
+/.next
+/out
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Deployment and tooling state
+.vercel
+*.tsbuildinfo
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+
+# Source videos used to generate the optimized public frame sequence
+/videos

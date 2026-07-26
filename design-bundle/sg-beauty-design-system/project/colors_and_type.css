@@ -1,0 +1,212 @@
+/* ─────────────────────────────────────────────────────────────────
+   SG Beauty — Color & Type Tokens
+   Adapted from the "Natural Touch" beauty-salon UI kit, with SG
+   Beauty's sage-green logo colour promoted to brand primary.
+   ───────────────────────────────────────────────────────────────── */
+
+/* Web fonts — Google Fonts is the source of truth (no local TTFs
+   were provided). Loaded once here so every consumer gets them. */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  /* ── Brand palette ──────────────────────────────────────────── */
+  --sg-sage:           #9CA68B;   /* logo background — brand primary    */
+  --sg-sage-deep:      #6F7B61;   /* CTA / hover                        */
+  --sg-sage-darker:    #4F5A45;   /* pressed / focus rings              */
+  --sg-sage-soft:      #C7CEB8;   /* muted tints, dividers              */
+  --sg-sage-mist:      #E8ECDF;   /* page-section wash                  */
+
+  /* Warm neutrals — kept from the Figma template */
+  --sg-cream:          #FFF3E4;   /* card / surface fill                */
+  --sg-blush:          #EED6C4;   /* warm border, divider section bg    */
+  --sg-blush-strong:   #DCBFA8;   /* outline against cream              */
+  --sg-rose-text:      #6B4F4F;   /* muted body in warm contexts        */
+
+  /* Cool neutrals */
+  --sg-ink:            #17313E;   /* darkest — heading on cream         */
+  --sg-slate:          #415E72;   /* secondary dark — footer, contrast  */
+  --sg-fog:            #D8DDE1;   /* hero panel wash                    */
+  --sg-paper:          #FFFFFF;
+  --sg-ink-12:         rgba(23, 49, 62, 0.12);
+  --sg-ink-22:         rgba(23, 49, 62, 0.22);
+  --sg-ink-40:         rgba(23, 49, 62, 0.40);
+
+  /* Accents */
+  --sg-lilac:          #BCA0C7;   /* secondary accent — pill icons     */
+  --sg-coral:          #D66363;   /* error / sale                       */
+  --sg-olive:          #B6BB79;   /* tertiary tag / promo              */
+
+  /* Foreground / semantic */
+  --fg-1:              var(--sg-ink);
+  --fg-2:              var(--sg-rose-text);
+  --fg-3:              #8A7373;
+  --fg-on-dark:        var(--sg-cream);
+  --fg-on-sage:        #FFFFFF;
+  --fg-link:           var(--sg-sage-deep);
+
+  /* Surfaces */
+  --bg-page:           var(--sg-paper);
+  --bg-card:           var(--sg-cream);
+  --bg-section-warm:   var(--sg-blush);
+  --bg-section-mist:   var(--sg-sage-mist);
+  --bg-section-fog:    var(--sg-fog);
+  --bg-dark:           var(--sg-slate);
+
+  /* Borders */
+  --border-soft:       var(--sg-blush);
+  --border-sage:       var(--sg-sage-soft);
+  --border-ink:        var(--sg-ink-40);
+  --border-hairline:   rgba(0, 0, 0, 0.08);
+
+  /* Type families */
+  --font-display:      "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-body:         "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:         ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  /* Type scale — anchored to 16px body */
+  --fs-eyebrow:        12px;      /* tracked caps                       */
+  --fs-body-sm:        14px;
+  --fs-body:           16px;
+  --fs-body-lg:        18px;
+  --fs-h4:             20px;
+  --fs-h3:             24px;
+  --fs-h2:             32px;
+  --fs-h1:             48px;
+  --fs-display:        72px;
+  --fs-mega:           140px;     /* Playfair Bold, hero numbers        */
+
+  --lh-tight:          1.1;
+  --lh-snug:           1.3;
+  --lh-body:           1.5;
+  --lh-relaxed:        1.65;
+
+  --tracking-eyebrow:  0.18em;
+  --tracking-caps:     0.08em;
+  --tracking-tight:    -0.01em;
+
+  /* Spacing scale (4-pt grid) */
+  --space-1:           4px;
+  --space-2:           8px;
+  --space-3:           12px;
+  --space-4:           16px;
+  --space-5:           20px;
+  --space-6:           24px;
+  --space-8:           32px;
+  --space-10:          40px;
+  --space-12:          48px;
+  --space-16:          64px;
+  --space-20:          80px;
+  --space-24:          96px;
+  --space-32:          128px;
+
+  /* Radii — the Figma calls out "border radius 24px" as a callout */
+  --radius-xs:         5px;
+  --radius-sm:         10px;
+  --radius-md:         16px;
+  --radius-lg:         20px;
+  --radius-xl:         24px;
+  --radius-pill:       999px;
+
+  /* Elevation */
+  --shadow-1:          0 1px 2px rgba(0, 0, 0, 0.04),
+                       0 2px 6px rgba(23, 49, 62, 0.06);
+  --shadow-2:          0 2px 12px rgba(0, 0, 0, 0.10);
+  --shadow-3:          0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-card:       0 2px 12px rgba(0, 0, 0, 0.25);   /* benefit card */
+  --shadow-focus:      0 0 0 3px rgba(156, 166, 139, 0.35);
+
+  /* Motion */
+  --ease-soft:         cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in:           cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:          cubic-bezier(0, 0, 0.2, 1);
+  --dur-fast:          120ms;
+  --dur-base:          200ms;
+  --dur-slow:          400ms;
+}
+
+/* ── Semantic type styles ─────────────────────────────────────── */
+
+.sg-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--sg-sage-deep);
+}
+
+.sg-h1, h1.sg {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+
+.sg-h2, h2.sg {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+
+.sg-h3, h3.sg {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+.sg-h4, h4.sg {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+.sg-body, p.sg {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.sg-body-sm {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
+  color: var(--fg-2);
+}
+
+.sg-quote {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: var(--lh-snug);
+  color: var(--sg-ink);
+}
+
+.sg-caps {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--sg-rose-text);
+}
+
+.sg-link {
+  color: var(--fg-link);
+  text-decoration: none;
+  transition: color var(--dur-base) var(--ease-soft);
+}
+.sg-link:hover { color: var(--sg-sage-darker); }
