@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { type ReactNode } from 'react'
 
 interface FadeInOnScrollProps {
@@ -17,7 +17,7 @@ export function FadeInOnScroll({
   className,
 }: FadeInOnScrollProps) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: yOffset }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -29,6 +29,6 @@ export function FadeInOnScroll({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }

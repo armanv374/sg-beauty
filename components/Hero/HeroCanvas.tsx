@@ -40,6 +40,8 @@ export function HeroCanvas({
   const cache = useRef(new Map<number, HTMLImageElement>())
   const renderedFrame = useRef(-1)
   const renderedSignature = useRef('')
+  const canvasSize = useRef({ width: 0, height: 0, dpr: 1 })
+  const requestDraw = useRef<() => void>(() => {})
   const frameRef = useRef(currentFrame)
   frameRef.current = currentFrame
   const focalXRef = useRef(focalX)
@@ -55,50 +57,71 @@ export function HeroCanvas({
   const loadFrame = (i: number) => {
     if (cache.current.has(i)) return
     const img = new Image()
-    img.onload = () => cache.current.set(i, img)
+    img.onload = () => {
+      cache.current.set(i, img)
+      requestDraw.current()
+    }
     img.onerror = () => {} // missing frame: draw fallback handles it
     img.src = frameUrl(i)
   }
 
-  // Tier 1 (eager) + Tier 3 (idle background fill)
+  // Preload only the opening buffer. Loading all 484 frames during startup
+  // created avoidable image/decode and callback work before user interaction.
   useEffect(() => {
     cache.current.clear()
     renderedFrame.current = -1
     renderedSignature.current = ''
 
-    const eager = Math.min(30, totalFrames)
+    const eager = Math.min(1, totalFrames)
     for (let i = 0; i < eager; i++) loadFrame(i)
 
-    let idx = eager
-    const step = () => {
-      if (idx >= totalFrames) return
-      loadFrame(idx++)
-      scheduleIdle(step)
-    }
-    scheduleIdle(step)
   // loadFrame is stable per render; isMobile/totalFrames are the real deps
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalFrames, isMobile])
 
   // Tier 2: preload 60 frames ahead of the current playhead
   useEffect(() => {
-    const end = Math.min(currentFrame + 60, totalFrames)
+    // Frame zero is the idle/LCP state. Do not download a transition buffer
+    // until the user has actually started moving to another hero stage.
+    const lookAhead = currentFrame === 0 ? 1 : 60
+    const end = Math.min(currentFrame + lookAhead, totalFrames)
     for (let i = currentFrame; i < end; i++) loadFrame(i)
+    requestDraw.current()
   }, [currentFrame, totalFrames, isMobile])
 
   // RAF draw loop — only redraws when currentFrame changes
   useEffect(() => {
-    let rafId: number
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const observer = new ResizeObserver(([entry]) => {
+      canvasSize.current = {
+        width: entry.contentRect.width,
+        height: entry.contentRect.height,
+        dpr: window.devicePixelRatio || 1,
+      }
+      renderedSignature.current = ''
+      requestDraw.current()
+    })
+    observer.observe(canvas)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    let rafId: number | null = null
     let ctx: CanvasRenderingContext2D | null = null
 
-    const tick = () => {
+    const draw = () => {
+      rafId = null
       const canvas = canvasRef.current
       if (canvas) {
         if (!ctx) ctx = canvas.getContext('2d')
+        const { width, height, dpr } = canvasSize.current
         const signature = [
           frameRef.current,
-          canvas.offsetWidth,
-          canvas.offsetHeight,
+          width,
+          height,
+          dpr,
           focalXRef.current,
           focalYRef.current,
           zoomRef.current,
@@ -113,6 +136,9 @@ export function HeroCanvas({
             focalXRef.current,
             focalYRef.current,
             zoomRef.current,
+            width,
+            height,
+            dpr,
           )
           if (didDraw) {
             renderedFrame.current = frameRef.current
@@ -120,11 +146,18 @@ export function HeroCanvas({
           }
         }
       }
-      rafId = requestAnimationFrame(tick)
     }
-    rafId = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(rafId)
-  }, []) // intentionally empty: RAF loop runs for lifetime of component
+
+    requestDraw.current = () => {
+      if (rafId === null) rafId = requestAnimationFrame(draw)
+    }
+    requestDraw.current()
+
+    return () => {
+      requestDraw.current = () => {}
+      if (rafId !== null) cancelAnimationFrame(rafId)
+    }
+  }, [])
 
   return (
     <div
@@ -140,14 +173,6 @@ export function HeroCanvas({
   )
 }
 
-function scheduleIdle(fn: () => void) {
-  if (typeof requestIdleCallback !== 'undefined') {
-    requestIdleCallback(() => fn())
-  } else {
-    setTimeout(fn, 100)
-  }
-}
-
 function drawFrame(
   canvas: HTMLCanvasElement,
   ctx: CanvasRenderingContext2D,
@@ -156,6 +181,9 @@ function drawFrame(
   focalX = 0.5,
   focalY = 0.5,
   zoom = 1.0,
+  cssW = 0,
+  cssH = 0,
+  dpr = 1,
 ): boolean {
   // Find nearest loaded frame if target frame not yet cached
   let img = cache.get(frameIndex)
@@ -175,9 +203,6 @@ function drawFrame(
   }
   if (!img) return false
 
-  const dpr = window.devicePixelRatio || 1
-  const cssW = canvas.offsetWidth
-  const cssH = canvas.offsetHeight
   if (cssW === 0 || cssH === 0) return false
 
   // Resize canvas pixel buffer only when CSS dimensions change

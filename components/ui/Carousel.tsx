@@ -172,17 +172,24 @@ export function Carousel<T>({
       </div>
 
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-center gap-2 mt-8">
+        <div className="flex items-center justify-center mt-6">
           {items.map((item, i) => (
             <button
               key={itemKey(item, i)}
               onClick={() => scrollToIndex(count + i)}
               aria-label={ariaLabel(i, count)}
-              className={cn(
-                'h-2 rounded-full transition-all duration-slow ease-soft',
-                activeLogical === i ? 'w-6 bg-sg-sage-deep' : 'w-2 bg-sg-ink/15 hover:bg-sg-ink/30'
-              )}
-            />
+              className="w-11 h-11 rounded-full flex items-center justify-center group"
+            >
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'block h-2 rounded-full transition-all duration-slow ease-soft',
+                  activeLogical === i
+                    ? 'w-6 bg-sg-sage-deep'
+                    : 'w-2 bg-sg-ink/15 group-hover:bg-sg-ink/30'
+                )}
+              />
+            </button>
           ))}
         </div>
       </div>

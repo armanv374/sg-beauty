@@ -12,7 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<Variant, string> = {
   primary:   'bg-sg-slate text-fg-on-dark border-transparent',
-  sage:      'bg-sg-sage text-fg-on-sage border-transparent hover:bg-sg-sage-deep active:bg-sg-sage-darker active:scale-[0.98]',
+  sage:      'bg-sg-sage text-sg-ink border-transparent hover:bg-sg-sage-soft active:bg-sg-sage-mist active:scale-[0.98]',
   dark:      'bg-sg-ink text-fg-on-dark border-transparent hover:bg-sg-slate active:scale-[0.98]',
   secondary: 'bg-transparent text-fg-1 border-sg-ink hover:bg-sg-ink/5',
   ghost:     'bg-transparent text-fg-1 border-transparent hover:bg-sg-ink/5',

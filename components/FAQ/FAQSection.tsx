@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { FadeInOnScroll } from '@/components/ui/FadeInOnScroll'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { cn } from '@/lib/cn'
@@ -61,7 +61,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 
         <AnimatePresence initial={false}>
           {open && (
-            <motion.div
+            <m.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -71,7 +71,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
               <p className="font-body text-[0.9375rem] text-fg-2 leading-relaxed pb-5 pr-8">
                 {a}
               </p>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>

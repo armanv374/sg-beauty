@@ -1,7 +1,7 @@
 'use client'
 
 import type { CSSProperties } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import type { Stage } from '@/lib/heroScrollMap'
 
@@ -22,7 +22,7 @@ export function HeroStageText({ stage, stageIndex, isHold, onBook }: Props) {
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full pb-[10dvh] md:pb-0">
         <AnimatePresence mode="wait">
           {isHold && (
-            <motion.div
+            <m.div
               key={stageIndex}
               className="max-w-xl pointer-events-auto"
               initial={{ opacity: 0, y: 12 }}
@@ -52,7 +52,7 @@ export function HeroStageText({ stage, stageIndex, isHold, onBook }: Props) {
                   {stage.cta.label}
                 </Button>
               )}
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>

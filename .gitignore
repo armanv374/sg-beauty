@@ -21,3 +21,9 @@ Thumbs.db
 
 # Source videos used to generate the optimized public frame sequence
 /videos
+
+# Reference art not used by the app
+/cnslmagencylogo
+
+# Local dev server logs
+.next-dev*.log

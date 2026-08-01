@@ -17,21 +17,9 @@ const NAV_COLS = [
     links: [
       { label: 'About Lilit', href: '#about' },
       { label: 'Gallery', href: '#gallery' },
-      { label: 'FAQ', href: '#faq' },
-      { label: 'Book', href: BOOKING_URL, external: true },
-    ],
-  },
-  {
-    heading: 'Sitemap',
-    links: [
-      { label: 'Home', href: '#top' },
-      { label: 'Services', href: '#services' },
-      { label: 'About', href: '#about' },
-      { label: 'Gallery', href: '#gallery' },
       { label: 'Reviews', href: '#reviews' },
       { label: 'FAQ', href: '#faq' },
-      { label: 'Contact', href: '#contact' },
-      { label: 'Book Now', href: BOOKING_URL, external: true },
+      { label: 'Book', href: BOOKING_URL, external: true },
     ],
   },
 ]
@@ -53,7 +41,7 @@ function SocialDot({ href, icon, label }: { href: string; icon: string; label: s
 export function FooterSection() {
   return (
     <footer className="bg-sg-ink text-fg-on-dark">
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-16 pb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-16 pb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr] gap-10">
         {/* Brand column */}
         <div className="flex flex-col gap-5 max-w-xs">
           <a href="#top" aria-label="SG Beauty home">
@@ -96,9 +84,9 @@ export function FooterSection() {
         {/* Nav columns */}
         {NAV_COLS.map((col) => (
           <div key={col.heading} className="flex flex-col gap-3">
-            <h4 className="font-body font-bold text-[13px] tracking-[0.18em] uppercase text-fg-on-dark mb-1">
+            <h2 className="font-body font-bold text-[13px] tracking-[0.18em] uppercase text-fg-on-dark mb-1">
               {col.heading}
-            </h4>
+            </h2>
             {col.links.map((link) => (
               <a
                 key={link.label}
@@ -116,12 +104,24 @@ export function FooterSection() {
 
       {/* Bottom strip */}
       <div className="border-t border-white/8 px-6 lg:px-8 py-5">
-        <div className="max-w-[1280px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 font-body text-[13px] text-fg-on-dark/45">
-          <span>© 2025 SG Beauty. All rights reserved.</span>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-fg-on-dark/80 transition-colors">Privacy</a>
-            <a href="#faq" className="hover:text-fg-on-dark/80 transition-colors">FAQ</a>
-          </div>
+        <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:justify-between items-center gap-4 md:gap-6 font-body text-[13px] text-fg-on-dark/60">
+          <span>© 2026 SG Beauty. All rights reserved.</span>
+
+          <a
+            href="https://cnslm.agency"
+            aria-label="Website crafted by Consilium"
+            className="group inline-flex items-center min-h-[44px] py-1 text-[11px] leading-none no-underline"
+          >
+            <span className="font-body text-fg-on-dark/60 group-hover:text-fg-on-dark group-focus-visible:text-fg-on-dark transition-colors duration-base ease-soft motion-reduce:transition-none">
+              Crafted by
+            </span>
+            <span className="font-display text-fg-on-dark/95 tracking-[0.1em] mx-1 group-hover:text-fg-on-dark group-focus-visible:text-fg-on-dark transition-colors duration-base ease-soft motion-reduce:transition-none">
+              CONSILIUM
+            </span>
+            <span className="font-body text-fg-on-dark/60 group-hover:text-fg-on-dark group-focus-visible:text-fg-on-dark transition-colors duration-base ease-soft motion-reduce:transition-none">
+              ↗
+            </span>
+          </a>
         </div>
       </div>
     </footer>

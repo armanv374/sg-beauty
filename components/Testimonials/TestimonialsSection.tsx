@@ -70,7 +70,6 @@ const REVIEWS: Review[] = [
     quote:
       "Had an amazing experience here. Lilit is very experienced, fast, and does a great job. She is very sweet, and these are the best lashes I've had so far because she made them custom and with a Russian technique. Will be back!",
     name: 'Samantha',
-    service: 'Russian Technique',
     stars: 5,
   },
   {
@@ -94,15 +93,15 @@ function Stars({ count }: { count: number }) {
 
 function TestimonialCard({ review }: { review: Review }) {
   return (
-    <div className="flex flex-col items-center text-center gap-6 bg-sg-cream rounded-xl shadow-2 px-8 py-12 sm:px-14 sm:py-14">
+    <div className="flex flex-col items-center text-center gap-4 sm:gap-6 bg-sg-cream rounded-xl shadow-2 px-6 py-8 sm:px-14 sm:py-14">
       <span
         aria-hidden="true"
-        className="font-display text-6xl leading-none text-sg-sage-deep/25 select-none"
+        className="font-display text-4xl sm:text-6xl leading-none text-sg-sage-deep/25 select-none"
       >
         &ldquo;
       </span>
 
-      <blockquote className="font-display font-semibold text-lg sm:text-xl leading-relaxed text-fg-1 -mt-4">
+      <blockquote className="font-display font-semibold text-base sm:text-xl leading-relaxed text-fg-1 -mt-2 sm:-mt-4">
         {review.quote}
       </blockquote>
 
@@ -155,8 +154,8 @@ export function TestimonialsSection() {
             items={REVIEWS}
             itemKey={(_, i) => i}
             ariaLabel={(i) => `Go to testimonial ${i + 1}`}
-            slideClassName="w-[85%] sm:w-[72%] lg:w-[56%]"
-            trackClassName="px-[7%] sm:px-[14%] lg:px-[22%]"
+            slideClassName="w-[90%] sm:w-[72%] lg:w-[56%]"
+            trackClassName="px-[5%] sm:px-[14%] lg:px-[22%]"
             renderItem={(review, i, { onSelect }) => (
               <button
                 onClick={onSelect}

@@ -8,10 +8,11 @@ import { GallerySection } from '@/components/Gallery/GallerySection'
 import { BookingCTASection } from '@/components/BookingCTA/BookingCTASection'
 import { FAQSection } from '@/components/FAQ/FAQSection'
 import { FooterSection } from '@/components/Footer/FooterSection'
+import { MotionProvider } from '@/components/ui/MotionProvider'
 
 export default function Home() {
   return (
-    <>
+    <MotionProvider>
       <Header />
       <main>
         <HeroSection />
@@ -24,6 +25,6 @@ export default function Home() {
         <FAQSection />
       </main>
       <FooterSection />
-    </>
+    </MotionProvider>
   )
 }
