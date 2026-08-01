@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import '@/styles/globals.css'
 
 const playfair = Playfair_Display({
@@ -151,6 +152,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body suppressHydrationWarning>{children}</body>
+      <GoogleAnalytics gaId="G-GMY3VC67MG" />
     </html>
   )
 }
