@@ -461,13 +461,15 @@ export function HeroSection() {
           <AnimatePresence>
             {isHold && stageIndex === 0 && (
               <m.div
-                className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-white/70 z-20"
+                className="flex absolute bottom-3 md:bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-white/70 z-20"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4 }}
               >
-                <span className="font-body text-xs tracking-[0.18em] uppercase">Scroll</span>
+                <span className="hidden md:block font-body text-xs tracking-[0.18em] uppercase">
+                  Scroll
+                </span>
                 <m.div
                   animate={{ y: [0, 6, 0] }}
                   transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
